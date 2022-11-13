@@ -52,6 +52,7 @@ class DBP15K(InMemoryDataset):
 
     def process_graph(self, triple_path, ent_path, emb_path):
         g = read_txt_array(triple_path, sep='\t', dtype=torch.long)
+        # read by lines, everyline split by " "
         subj, rel, obj = g.t()
         
         assoc = torch.full((rel.max().item()+1,), -1, dtype=torch.long)
